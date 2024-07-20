@@ -17,6 +17,19 @@ describe("StateMatrix", function()
         assert.are.equal(5, instance.height)
     end)
 
+    it("should initilize correctly an empty state", function()
+        local state = {
+            { 0, 0 },
+            { 0, 0 },
+            { 0, 0 },
+        }
+        local instance = StateMatrix.new_empty(2, 3)
+
+        assert.are.equal(2, instance.width)
+        assert.are.equal(3, instance.height)
+        assert.are.same(state, instance.state)
+    end)
+
     it("should not equal states", function()
         local state = {
             { 0, 0, 0, 1 },

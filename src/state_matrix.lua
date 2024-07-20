@@ -19,7 +19,7 @@ StateMatrix.__eq = function(a, b)
     return equals
 end
 
----comment
+---Initializes a new state matrix
 ---@param state table
 ---@return StateMatrix
 StateMatrix.new = function(state)
@@ -27,6 +27,29 @@ StateMatrix.new = function(state)
         state = state,
         width = #state[1],
         height = #state,
+    }, StateMatrix)
+
+    return instance
+end
+
+---Initializes a new state matrix with only inactive cells
+---@param width number
+---@param height number
+---@return StateMatrix
+StateMatrix.new_empty = function(width, height)
+    local state = {}
+    for i = 1, height do
+        local row = {}
+        state[i] = row
+        for j = 1, width do
+            row[j] = 0
+        end
+    end
+
+    local instance = setmetatable({
+        width = width,
+        height = height,
+        state = state
     }, StateMatrix)
 
     return instance
