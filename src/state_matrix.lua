@@ -25,11 +25,25 @@ end
 StateMatrix.new = function(state)
     local instance = setmetatable({
         state = state,
-        width = #state,
-        height = #state[1],
+        width = #state[1],
+        height = #state,
     }, StateMatrix)
 
     return instance
+end
+
+
+function StateMatrix:print()
+    print("[")
+    for i = 1, self.height do
+        local output = "{ "
+        for j = 1, self.width do
+            output = output .. self.state[i][j] .. ", "
+        end
+        output = output .. "}"
+        print(output)
+    end
+    print("]")
 end
 
 return StateMatrix
