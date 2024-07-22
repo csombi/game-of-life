@@ -1,5 +1,5 @@
-local ConfigurationType = require("configuration_type")
-local StateMatrix = require("state_matrix")
+local ConfigurationType = require("game-of-life.logic.configuration_type")
+local StateMatrix = require("game-of-life.logic.state_matrix")
 
 ---@class Configuration
 ---@field width number

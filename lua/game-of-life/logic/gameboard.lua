@@ -1,4 +1,4 @@
-local State = require("state")
+local State = require("game-of-life.logic.state")
 
 ---@class Gameboard
 ---@field configuration Configuration
