@@ -1,19 +1,19 @@
 ---@class ConfigurationType
----@field BLOCK
----@field BEEHIVE
----@field LOAF
----@field BOAT
----@field TUB
----@field BLINKER
----@field TOAD
----@field BEACON
----@field PULSAR
----@field PENTADECATHLON
----@field GLIDER
----@field LIGHT_WEIGHT_SPACESHIP
----@field MIDDLE_WEIGHT_SPACESHIP
----@field HEAVY_WEIGHT_SPACESHIP
----@field RANDOM
+---@field BLOCK string
+---@field BEEHIVE string
+---@field LOAF string
+---@field BOAT string
+---@field TUB string
+---@field BLINKER string
+---@field TOAD string
+---@field BEACON string
+---@field PULSAR string
+---@field PENTADECATHLON string
+---@field GLIDER string
+---@field LIGHT_WEIGHT_SPACESHIP string
+---@field MIDDLE_WEIGHT_SPACESHIP string
+---@field HEAVY_WEIGHT_SPACESHIP string
+---@field RANDOM string
 
 return {
     BLOCK                   = "BLOCK",
