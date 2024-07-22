@@ -23,3 +23,5 @@ Gameboard.new = function(configuration)
 
     return instance
 end
+
+return Gameboard

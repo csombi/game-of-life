@@ -1,4 +1,4 @@
-package.path = package.path .. ";../src/?.lua"
+package.path = package.path .. ";../logic/?.lua"
 
 local Confiugration = require("confiugration")
 local ConfiugrationType = require("configuration_type")

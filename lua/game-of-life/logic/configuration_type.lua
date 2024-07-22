@@ -16,12 +16,14 @@
 ---@field RANDOM string
 
 return {
+    -- STILL LIFES
     BLOCK                   = "BLOCK",
     BEEHIVE                 = "BEEHIVE",
     LOAF                    = "LOAF",
     BOAT                    = "BOAT",
     TUB                     = "TUB",
 
+    -- OSCILLATORS
     BLINKER                 = "BLINKER",
     TOAD                    = "TOAD",
     BEACON                  = "BEACON",
@@ -29,9 +31,11 @@ return {
     PENTADECATHLON          = "PENTADECATHLON",
     GLIDER                  = "GLIDER",
 
+    -- SPACESHIPS
     LIGHT_WEIGHT_SPACESHIP  = "LIGHT_WEIGHT_SPACESHIP",
     MIDDLE_WEIGHT_SPACESHIP = "MIDDLE_WEIGHT_SPACESHIP",
     HEAVY_WEIGHT_SPACESHIP  = "HEAVY_WEIGHT_SPACESHIP",
 
+    -- RANDOM
     RANDOM                  = "RANDOM"
 }

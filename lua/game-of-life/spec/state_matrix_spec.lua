@@ -1,4 +1,4 @@
-package.path = package.path .. ";../src/?.lua"
+package.path = package.path .. ";../logic/?.lua"
 
 describe("StateMatrix", function()
     local StateMatrix = require("state_matrix")

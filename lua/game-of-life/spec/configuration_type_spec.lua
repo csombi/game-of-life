@@ -1,4 +1,4 @@
-package.path = package.path .. ";../src/?.lua"
+package.path = package.path .. ";../logic/?.lua"
 
 describe("ConfigurationType", function()
     local type = require("configuration_type")
