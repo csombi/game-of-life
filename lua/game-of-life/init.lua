@@ -16,7 +16,7 @@ local function convert_to_string(state)
             if 0 == state.state[y][x] then
                 line = line .. " "
             else
-                line = line .. "X"
+                line = line .. "█"
             end
         end
         lines[y] = line
@@ -63,16 +63,22 @@ function M.setup()
         error("game-of-life could not create a new buffer!")
     end
 
+    local win_width = vim.o.columns
+    local win_height = vim.o.lines
+    local shift_y = math.floor((win_height - gameboard.configuration.height) / 2)
+    local shift_x = math.floor((win_width - gameboard.configuration.width) / 2)
     local window = vim.api.nvim_open_win(
         buffer,
         false,
         {
-            relative = "win",
-            row = gameboard.configuration.height,
-            col = gameboard.configuration.width,
+            relative = "editor",
+            row = shift_y,
+            col = shift_x,
             width = gameboard.configuration.width,
             height = gameboard.configuration.height,
-            border = "double"
+            border = "single",
+            title = "Game of Life",
+            title_pos = "center"
         })
     if 0 == window then
         error("game-of-life could not create a new window!")
