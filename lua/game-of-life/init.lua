@@ -1,6 +1,6 @@
 local Gameboard = require("game-of-life.logic.gameboard")
 local ConfigurationType = require("game-of-life.logic.configuration_type")
-local Configuration = require("game-of-life.logic.confiugration")
+local Configuration = require("game-of-life.logic.configuration")
 
 local M = {}
 

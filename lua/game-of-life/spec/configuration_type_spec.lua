@@ -1,7 +1,7 @@
-package.path = package.path .. ";../logic/?.lua"
+package.path = package.path .. ";../../?.lua"
 
 describe("ConfigurationType", function()
-    local type = require("configuration_type")
+    local type = require("game-of-life.logic.configuration_type")
 
     it("should return BLOCK configuration type", function()
         assert.are.equal("BLOCK", type.BLOCK)

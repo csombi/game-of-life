@@ -1,8 +1,8 @@
-package.path = package.path .. ";../logic/?.lua"
+package.path = package.path .. ";../../?.lua"
 
-local Configuration = require("configuration")
-local ConfigurationType = require("configuration_type")
-local StateMatrix = require("state_matrix")
+local Configuration = require("game-of-life.logic.configuration")
+local ConfigurationType = require("game-of-life.logic.configuration_type")
+local StateMatrix = require("game-of-life.logic.state_matrix")
 
 describe("Configuration", function()
     it("should initialize correctly", function()

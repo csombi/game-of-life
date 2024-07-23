@@ -1,7 +1,7 @@
-package.path = package.path .. ";../logic/?.lua"
+package.path = package.path .. ";../../?.lua"
 
 describe("StateMatrix", function()
-    local StateMatrix = require("state_matrix")
+    local StateMatrix = require("game-of-life.logic.state_matrix")
 
     it("should initilize correctly", function()
         local state = {
