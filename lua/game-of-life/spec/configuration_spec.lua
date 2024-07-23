@@ -1,6 +1,6 @@
 package.path = package.path .. ";../logic/?.lua"
 
-local Configuration = require("confiugration")
+local Configuration = require("configuration")
 local ConfigurationType = require("configuration_type")
 local StateMatrix = require("state_matrix")
 

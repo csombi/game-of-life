@@ -1,4 +1,4 @@
-local StateMatrix = require("game-of-life.logic.state_matrix")
+local StateMatrix = require("state_matrix")
 
 ---@class State
 ---@field configuration Configuration

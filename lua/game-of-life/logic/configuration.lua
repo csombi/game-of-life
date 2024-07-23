@@ -1,5 +1,5 @@
-local ConfigurationType = require("game-of-life.logic.configuration_type")
-local StateMatrix = require("game-of-life.logic.state_matrix")
+local ConfigurationType = require("configuration_type")
+local StateMatrix = require("state_matrix")
 
 ---@class Configuration
 ---@field width number
@@ -233,7 +233,9 @@ function Configuration:get_initial_state()
         initial_state[center_y + 2][center_x + 1] = 1
         initial_state[center_y + 1][center_x + 2] = 1
     elseif self.type == ConfigurationType.BLINKER then
-        -- TODO
+        initial_state[center_y - 1][center_x] = 1
+        initial_state[center_y][center_x] = 1
+        initial_state[center_y + 1][center_x] = 1
     elseif self.type == ConfigurationType.TOAD then
         -- TODO
     elseif self.type == ConfigurationType.BEACON then

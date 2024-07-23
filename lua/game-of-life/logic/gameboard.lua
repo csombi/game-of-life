@@ -1,4 +1,4 @@
-local State = require("game-of-life.logic.state")
+local State = require("state")
 
 ---@class Gameboard
 ---@field configuration Configuration
@@ -8,8 +8,8 @@ Gameboard.__index = Gameboard
 
 Gameboard.__tostring = function(gameboard)
     print(" {")
-    print(gameboard.configuration)
-    print(gameboard.state)
+    print(tostring(gameboard.configuration))
+    print(tostring(gameboard.state))
     print(" }")
 end
 
