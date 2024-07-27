@@ -1,10 +1,11 @@
 local ConfigurationType = require("game-of-life.logic.configuration_type")
-local StateMatrix = require("game-of-life.logic.state_matrix")
+local State = require("game-of-life.logic.state")
 
 ---@class Configuration
 ---@field width number
 ---@field height number
 ---@field type string
+---@field max_generation number
 local Configuration = {}
 Configuration.__index = Configuration
 
@@ -20,7 +21,7 @@ end
 ---@param height number
 ---@param type string
 ---@return Configuration
-Configuration.new = function(width, height, type)
+Configuration.new = function(width, height, type, max_generation)
     local min_width = 0
     local min_height = 0
 
@@ -179,14 +180,15 @@ Configuration.new = function(width, height, type)
     local instance = setmetatable({
         width = width,
         height = height,
-        type = type
+        type = type,
+        max_generation = max_generation
     }, Configuration)
 
     return instance
 end
 
 ---Gets the initial state based on the configuration
----@return StateMatrix
+---@return State
 function Configuration:get_initial_state()
     -- Setting every cell as inactive
     local initial_state = {}
@@ -376,7 +378,7 @@ function Configuration:get_initial_state()
         -- TODO
     end
 
-    return StateMatrix.new(initial_state)
+    return initial_state
 end
 
 return Configuration

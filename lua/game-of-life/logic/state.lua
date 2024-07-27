@@ -1,16 +1,26 @@
-local StateMatrix = require("game-of-life.logic.state_matrix")
-
 ---@class State
----@field configuration Configuration
----@field state StateMatrix
 local State = {}
 State.__index = State
+State.__eq = function(a, b)
+    if #a ~= #b or #a[1] ~= #b[1] then
+        return false
+    end
+
+    local equals = true
+    for i = 1, a.width do
+        for j = 1, a.height do
+            equals = equals and a[i][j] == b[i][j]
+        end
+    end
+
+    return equals
+end
 
 ---Gets the collection of neighbours' indices
----@param state_matrix StateMatrix
----@param x number
+---@param state number[][]
 ---@param y number
-local function get_neighbour_indicies(state_matrix, x, y)
+---@param x number
+local function get_neighbour_indicies(state, x, y)
     local inidices = {}
     local index = 1
 
@@ -24,7 +34,7 @@ local function get_neighbour_indicies(state_matrix, x, y)
         index = index + 1
     end
 
-    if 0 < y - 1 and x + 1 <= state_matrix.width then
+    if 0 < y - 1 and x + 1 <= #state[1] then
         inidices[index] = { y - 1, x + 1 }
         index = index + 1
     end
@@ -34,22 +44,22 @@ local function get_neighbour_indicies(state_matrix, x, y)
         index = index + 1
     end
 
-    if x + 1 <= state_matrix.width then
+    if x + 1 <= #state[1] then
         inidices[index] = { y, x + 1 }
         index = index + 1
     end
 
-    if y + 1 <= state_matrix.height and 0 < x - 1 then
+    if y + 1 <= #state and 0 < x - 1 then
         inidices[index] = { y + 1, x - 1 }
         index = index + 1
     end
 
-    if y + 1 <= state_matrix.height then
+    if y + 1 <= #state then
         inidices[index] = { y + 1, x }
         index = index + 1
     end
 
-    if y + 1 <= state_matrix.height and x + 1 <= state_matrix.width then
+    if y + 1 <= #state and x + 1 <= #state[1] then
         inidices[index] = { y + 1, x + 1 }
         index = index + 1
     end
@@ -58,12 +68,12 @@ local function get_neighbour_indicies(state_matrix, x, y)
 end
 
 ---Gets the number of living neighbours
----@param state_matrix StateMatrix
+---@param state number[][]
 ---@param neighbour_inidices number[][]
-local function get_living_neighbours_count(state_matrix, neighbour_inidices)
+local function get_living_neighbours_count(state, neighbour_inidices)
     local count = 0
     for _, index in pairs(neighbour_inidices) do
-        if state_matrix.state[index[1]][index[2]] == 1 then
+        if state[index[1]][index[2]] == 1 then
             count = count + 1
         end
     end
@@ -71,45 +81,56 @@ local function get_living_neighbours_count(state_matrix, neighbour_inidices)
     return count
 end
 
----@param configuration Configuration
----@return State
-State.new = function(configuration)
-    local instance = setmetatable({
-        configuration = configuration,
-        state = configuration:get_initial_state()
-    }, State)
-    return instance
+---Gets a new state with only inactive cells
+---@param state_to_copy number[][]
+---@return number[][]
+function State.new_empty(state_to_copy)
+    local new_state = {}
+    for i = 1, #state_to_copy do
+        local row = {}
+        new_state[i] = row
+        for j = 1, #state_to_copy[1] do
+            row[j] = 0
+        end
+    end
+
+    return new_state
 end
 
-function State:generate_next_state()
-    local next_state = StateMatrix.new_empty(self.configuration.width, self.configuration.height)
-    for y = 1, self.state.height do
-        for x = 1, self.state.width do
-            local neighbour_inidices = get_neighbour_indicies(self.state, x, y)
-            local living_neighbours_count = get_living_neighbours_count(self.state, neighbour_inidices)
-            if self.state.state[y][x] == 1 then
+---Gets the next state
+---@param state number[][]
+---@return number[][]
+State.generate_next_state = function(state)
+    local next_state = State.new_empty(state)
+    for y = 1, #state do
+        for x = 1, #state[1] do
+            local neighbour_inidices = get_neighbour_indicies(state, x, y)
+            local living_neighbours_count = get_living_neighbours_count(state, neighbour_inidices)
+            if state[y][x] == 1 then
                 -- Any live cell with fewer than two live neighbours dies, as if by underpopulation.
                 -- Any live cell with two or three live neighbours lives on to the next generation.
                 -- Any live cell with more than three live neighbours dies, as if by overpopulation.
                 if living_neighbours_count < 2 or 3 < living_neighbours_count then
-                    next_state.state[y][x] = 0
+                    next_state[y][x] = 0
                 else
-                    next_state.state[y][x] = 1
+                    next_state[y][x] = 1
                 end
             else
                 -- Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
                 if living_neighbours_count == 3 then
-                    next_state.state[y][x] = 1
+                    next_state[y][x] = 1
                 end
             end
         end
     end
 
-    self.state = next_state
+    return next_state
 end
 
-function State:print()
-    self.state:print()
+---@param configuration Configuration
+---@return number[][]
+State.new_by_config = function(configuration)
+    return configuration:get_initial_state()
 end
 
 return State
