@@ -337,7 +337,15 @@ function Configuration:get_initial_state()
         initial_state[center_y][center_x + 2] = 1
         initial_state[center_y - 1][center_x + 1] = 1
     elseif self.type == ConfigurationType.LIGHT_WEIGHT_SPACESHIP then
-        -- TODO
+        initial_state[center_y][center_x] = 1
+        initial_state[center_y - 2][center_x] = 1
+        initial_state[center_y - 2][center_x + 3] = 1
+        initial_state[center_y - 1][center_x + 4] = 1
+        initial_state[center_y][center_x + 4] = 1
+        initial_state[center_y + 1][center_x + 4] = 1
+        initial_state[center_y + 1][center_x + 3] = 1
+        initial_state[center_y + 1][center_x + 2] = 1
+        initial_state[center_y + 1][center_x + 1] = 1
     elseif self.type == ConfigurationType.MIDDLE_WEIGHT_SPACESHIP then
         -- TODO
     elseif self.type == ConfigurationType.HEAVY_WEIGHT_SPACESHIP then
