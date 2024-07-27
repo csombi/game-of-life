@@ -253,7 +253,58 @@ function Configuration:get_initial_state()
         initial_state[center_y + 2][center_x + 1] = 1
         initial_state[center_y + 2][center_x + 2] = 1
     elseif self.type == ConfigurationType.PULSAR then
-        -- TODO
+        -- top left
+        initial_state[center_y][center_x - 1] = 1
+        initial_state[center_y][center_x - 2] = 1
+        initial_state[center_y][center_x - 3] = 1
+        initial_state[center_y - 1][center_x] = 1
+        initial_state[center_y - 2][center_x] = 1
+        initial_state[center_y - 3][center_x] = 1
+        initial_state[center_y - 1][center_x - 5] = 1
+        initial_state[center_y - 2][center_x - 5] = 1
+        initial_state[center_y - 3][center_x - 5] = 1
+        initial_state[center_y - 5][center_x - 1] = 1
+        initial_state[center_y - 5][center_x - 2] = 1
+        initial_state[center_y - 5][center_x - 3] = 1
+        -- top right
+        initial_state[center_y][center_x + 3] = 1
+        initial_state[center_y][center_x + 4] = 1
+        initial_state[center_y][center_x + 5] = 1
+        initial_state[center_y - 1][center_x + 2] = 1
+        initial_state[center_y - 2][center_x + 2] = 1
+        initial_state[center_y - 3][center_x + 2] = 1
+        initial_state[center_y - 1][center_x + 7] = 1
+        initial_state[center_y - 2][center_x + 7] = 1
+        initial_state[center_y - 3][center_x + 7] = 1
+        initial_state[center_y - 5][center_x + 3] = 1
+        initial_state[center_y - 5][center_x + 4] = 1
+        initial_state[center_y - 5][center_x + 5] = 1
+        -- bottom left
+        initial_state[center_y + 2][center_x - 1] = 1
+        initial_state[center_y + 2][center_x - 2] = 1
+        initial_state[center_y + 2][center_x - 3] = 1
+        initial_state[center_y + 3][center_x] = 1
+        initial_state[center_y + 4][center_x] = 1
+        initial_state[center_y + 5][center_x] = 1
+        initial_state[center_y + 3][center_x - 5] = 1
+        initial_state[center_y + 4][center_x - 5] = 1
+        initial_state[center_y + 5][center_x - 5] = 1
+        initial_state[center_y + 7][center_x - 2] = 1
+        initial_state[center_y + 7][center_x - 3] = 1
+        initial_state[center_y + 7][center_x - 4] = 1
+        -- bottom right
+        initial_state[center_y + 2][center_x + 3] = 1
+        initial_state[center_y + 2][center_x + 4] = 1
+        initial_state[center_y + 2][center_x + 5] = 1
+        initial_state[center_y + 3][center_x + 2] = 1
+        initial_state[center_y + 4][center_x + 2] = 1
+        initial_state[center_y + 5][center_x + 2] = 1
+        initial_state[center_y + 3][center_x + 7] = 1
+        initial_state[center_y + 4][center_x + 7] = 1
+        initial_state[center_y + 5][center_x + 7] = 1
+        initial_state[center_y + 7][center_x + 3] = 1
+        initial_state[center_y + 7][center_x + 4] = 1
+        initial_state[center_y + 7][center_x + 5] = 1
     elseif self.type == ConfigurationType.PENTADECATHLON then
         -- TODO
     elseif self.type == ConfigurationType.GLIDER then
