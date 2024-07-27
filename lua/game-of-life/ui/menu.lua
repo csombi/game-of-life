@@ -1,5 +1,8 @@
 local NuiMenu = require("nui.menu")
 local NuiEvent = require("nui.utils.autocmd").event
+local ConfigurationType = require("game-of-life.logic.configuration_type")
+local Configuration = require("game-of-life.logic.configuration")
+local Gameboard = require("game-of-life.logic.gameboard")
 
 ---Represents Game of Life menu
 ---@class Menu
@@ -8,6 +11,60 @@ local Menu = {}
 Menu.__index = Menu
 
 function Menu:handle_configuration()
+    local popup_options = {
+        position = "50%",
+        enter = true,
+        focusable = true,
+        relative = "editor",
+        border = {
+            padding = {
+                top = 2,
+                bottom = 2,
+                left = 3,
+                right = 3,
+            },
+            style = "single",
+            text = {
+                top = "Type",
+                top_align = "center",
+            },
+        },
+        buf_options = {
+            modifiable = true,
+            readonly = false,
+        },
+    }
+
+    local menu_items = {}
+    for _, type in pairs(ConfigurationType) do
+        table.insert(menu_items, NuiMenu.item(type))
+    end
+
+    local menu_options = {
+        lines = menu_items,
+        on_submit = function(item)
+            for _, type in pairs(ConfigurationType) do
+                if item.text == type then
+                    local configuration = Configuration.new(
+                        self.gameboard.configuration.width,
+                        self.gameboard.configuration.height,
+                        type,
+                        self.gameboard.configuration.max_generation)
+                    self.gameboard = Gameboard.new(configuration)
+                end
+            end
+
+            self:open()
+        end
+    }
+
+    local nui_menu = NuiMenu(popup_options, menu_options)
+
+    nui_menu:on(NuiEvent.BufLeave, function()
+        nui_menu:unmount()
+    end)
+
+    nui_menu:mount()
 end
 
 function Menu:handle_start()
@@ -59,6 +116,7 @@ function Menu:handle_start()
 end
 
 function Menu:handle_exit()
+    -- Do nothing, just let Nui to unmount the menu
 end
 
 function Menu:open()
