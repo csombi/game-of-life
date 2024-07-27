@@ -125,8 +125,8 @@ Configuration.new = function(width, height, type)
             ctor_height_error(ConfigurationType.PENTADECATHLON, min_height)
         end
     elseif type == ConfigurationType.GLIDER then
-        min_width = 7
-        min_height = 7
+        min_width = 6
+        min_height = 6
         if width < min_width then
             ctor_width_error(ConfigurationType.GLIDER, min_width)
         end
@@ -331,7 +331,11 @@ function Configuration:get_initial_state()
         initial_state[center_y + 2][center_x] = 1
         initial_state[center_y + 1][center_x] = 1
     elseif self.type == ConfigurationType.GLIDER then
-        -- TODO
+        initial_state[center_y + 1][center_x] = 1
+        initial_state[center_y + 1][center_x + 1] = 1
+        initial_state[center_y + 1][center_x + 2] = 1
+        initial_state[center_y][center_x + 2] = 1
+        initial_state[center_y - 1][center_x + 1] = 1
     elseif self.type == ConfigurationType.LIGHT_WEIGHT_SPACESHIP then
         -- TODO
     elseif self.type == ConfigurationType.MIDDLE_WEIGHT_SPACESHIP then

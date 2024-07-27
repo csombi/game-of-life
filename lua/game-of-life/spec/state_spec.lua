@@ -202,3 +202,20 @@ describe("PENTADECATHLON state", function()
         assert.are.same(initial_state, instance.state)
     end)
 end)
+
+describe("GLIDER state", function()
+    it("should generate initial state correctly", function()
+        local confiugration = Confiugration.new(6, 6, ConfiugrationType.GLIDER)
+        local instance = State.new(confiugration)
+        local initial_state = StateMatrix.new({
+            { 0, 0, 0, 0, 0, 0, },
+            { 0, 0, 0, 1, 0, 0, },
+            { 0, 0, 0, 0, 1, 0, },
+            { 0, 0, 1, 1, 1, 0, },
+            { 0, 0, 0, 0, 0, 0, },
+            { 0, 0, 0, 0, 0, 0, },
+        })
+
+        assert.are.same(initial_state, instance.state)
+    end)
+end)
