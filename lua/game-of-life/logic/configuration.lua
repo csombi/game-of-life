@@ -237,7 +237,12 @@ function Configuration:get_initial_state()
         initial_state[center_y][center_x] = 1
         initial_state[center_y + 1][center_x] = 1
     elseif self.type == ConfigurationType.TOAD then
-        -- TODO
+        initial_state[center_y][center_x + 1] = 1
+        initial_state[center_y][center_x + 2] = 1
+        initial_state[center_y][center_x + 3] = 1
+        initial_state[center_y + 1][center_x] = 1
+        initial_state[center_y + 1][center_x + 1] = 1
+        initial_state[center_y + 1][center_x + 2] = 1
     elseif self.type == ConfigurationType.BEACON then
         -- TODO
     elseif self.type == ConfigurationType.PULSAR then

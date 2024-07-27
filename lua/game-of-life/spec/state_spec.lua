@@ -129,3 +129,30 @@ describe("BLINKER state", function()
         assert.are.same(next_state, instance.state)
     end)
 end)
+
+describe("TOAD state", function()
+    it("should generate next state correctly", function()
+        local confiugration = Confiugration.new(6, 6, ConfiugrationType.TOAD)
+        local instance = State.new(confiugration)
+        local initial_state = StateMatrix.new({
+            { 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 1, 1, 1 },
+            { 0, 0, 1, 1, 1, 0 },
+            { 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 0, 0 },
+        })
+        local next_state = StateMatrix.new({
+            { 0, 0, 0, 0, 0, 0 },
+            { 0, 0, 0, 0, 1, 0 },
+            { 0, 0, 1, 0, 0, 1 },
+            { 0, 0, 1, 0, 0, 1 },
+            { 0, 0, 0, 1, 0, 0 },
+            { 0, 0, 0, 0, 0, 0 },
+        })
+
+        assert.are.same(initial_state, instance.state)
+        instance:generate_next_state()
+        assert.are.same(next_state, instance.state)
+    end)
+end)
