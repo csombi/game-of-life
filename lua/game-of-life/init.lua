@@ -1,15 +1,23 @@
-local Gameboard = require("game-of-life.logic.gameboard")
-local ConfigurationType = require("game-of-life.logic.configuration_type")
-local Configuration = require("game-of-life.logic.configuration")
 local Menu = require("game-of-life.ui.menu")
 
 local M = {}
+M.__index = M
 
-function M.setup()
-    local configuration = Configuration.new(150, 30, ConfigurationType.GLIDER, 200)
-    local gameboard = Gameboard.new(configuration)
-    local menu = Menu.new(gameboard)
-    menu:open()
+function M.new()
+    local menu = Menu.new()
+    local instance = setmetatable({
+        menu = menu
+    }, M)
+
+    return instance
+end
+
+function M:open()
+    self.menu:open()
+end
+
+function M:close()
+    self.menu:handle_exit()
 end
 
 return M

@@ -11,7 +11,6 @@ Gameboard.__index = Gameboard
 function Gameboard:get_state_as_lines()
     local lines = {}
 
-    -- TODO: Remove redundancy
     for y = 1, self.configuration.height do
         local line = ""
         for x = 1, self.configuration.width do

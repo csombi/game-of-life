@@ -2,7 +2,6 @@ package.path = package.path .. ";../../?.lua"
 
 local Configuration = require("game-of-life.logic.configuration")
 local ConfigurationType = require("game-of-life.logic.configuration_type")
-local State = require("game-of-life.logic.state")
 
 describe("Configuration", function()
     it("should initialize correctly", function()
