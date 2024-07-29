@@ -1,20 +1,42 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Game of Life
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+This plugin implements a zero-player game: [game of life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life).
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+## Sample
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+![Sample](./media/sample.gif)
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+## Reason of existance
+
+I have written this plugin just for the sake of learning - treat it accordingly! :)
+
+The plugin lacks a lot of features, but roughly implements the following configurations:
+
+- [x] Block
+- [x] Beehive
+- [x] Loaf
+- [x] Boat
+- [x] Tub
+- [x] Blinker
+- [x] Toad
+- [x] Beacon
+- [x] Pulsar
+- [x] Pentadecathlon
+- [x] Glider
+- [x] Light-weight spaceship
+- [x] Middle-weight spaceship
+- [x] Heavy-weight spaceship
+
+## Installation
+
+### [lazy.nvim](https://github.com/folke/lazy.nvim)
+
+```lua
+{
+    "csombi/game-of-life.nvim",
+    dependencies = { 'MunifTanjim/nui.nvim' }
+}
+```
+
+The plugin does not accept any configuration.
+The menu is created using [nui.nvim](https://github.com/MunifTanjim/nui.nvim/tree/main).
