@@ -175,10 +175,18 @@ function Menu:handle_start()
 end
 
 function Menu:handle_exit()
-    pcall(self.timer.close, self.timer)
-    pcall(vim.api.nvim_win_close, self.window_id, true)
-    pcall(vim.api.nvim_buf_delete, self.bufffer_id, { force = true })
-    pcall(self.menu.unmount, self.menu)
+    if self.timer then
+        _ = pcall(self.timer.close, self.timer)
+    end
+    if self.window_id then
+        _ = pcall(vim.api.nvim_win_close, self.window_id, true)
+    end
+    if self.bufffer_id then
+        _ = pcall(vim.api.nvim_buf_delete, self.bufffer_id, { force = true })
+    end
+    if self.menu then
+        _ = pcall(self.menu.unmount, self.menu)
+    end
 
     for key, _ in pairs(self) do
         self[key] = nil
