@@ -13,7 +13,6 @@
 ---@field LIGHT_WEIGHT_SPACESHIP string
 ---@field MIDDLE_WEIGHT_SPACESHIP string
 ---@field HEAVY_WEIGHT_SPACESHIP string
----@field RANDOM string
 
 return {
     -- STILL LIFES
@@ -35,7 +34,4 @@ return {
     LIGHT_WEIGHT_SPACESHIP  = "LIGHT_WEIGHT_SPACESHIP",
     MIDDLE_WEIGHT_SPACESHIP = "MIDDLE_WEIGHT_SPACESHIP",
     HEAVY_WEIGHT_SPACESHIP  = "HEAVY_WEIGHT_SPACESHIP",
-
-    -- RANDOM
-    RANDOM                  = "RANDOM"
 }

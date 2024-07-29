@@ -165,16 +165,6 @@ Configuration.new = function(width, height, type, max_generation)
         if height < min_height then
             ctor_height_error(ConfigurationType.HEAVY_WEIGHT_SPACESHIP, min_height)
         end
-    elseif type == ConfigurationType.RANDOM then
-        min_width = 1
-        min_height = 1
-        if width < min_width then
-            ctor_width_error(ConfigurationType.RANDOM, min_width)
-        end
-
-        if height < min_height then
-            ctor_height_error(ConfigurationType.RANDOM, min_height)
-        end
     end
 
     local instance = setmetatable({
@@ -374,8 +364,6 @@ function Configuration:get_initial_state()
         initial_state[center_y + 1][center_x + 3] = 1
         initial_state[center_y + 1][center_x + 2] = 1
         initial_state[center_y + 1][center_x + 1] = 1
-    elseif self.type == ConfigurationType.RANDOM then
-        -- TODO
     end
 
     return initial_state
