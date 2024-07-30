@@ -281,9 +281,9 @@ function Configuration:get_initial_state()
         initial_state[center_y + 3][center_x - 5] = 1
         initial_state[center_y + 4][center_x - 5] = 1
         initial_state[center_y + 5][center_x - 5] = 1
+        initial_state[center_y + 7][center_x - 1] = 1
         initial_state[center_y + 7][center_x - 2] = 1
         initial_state[center_y + 7][center_x - 3] = 1
-        initial_state[center_y + 7][center_x - 4] = 1
         -- bottom right
         initial_state[center_y + 2][center_x + 3] = 1
         initial_state[center_y + 2][center_x + 4] = 1
